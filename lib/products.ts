@@ -13,7 +13,7 @@ const getProductsCached = unstable_cache(
   },
   ["products"],
   {
-    revalidate: 3600,
+    revalidate: 0, // Disable caching to always fetch fresh data
     tags: ["products"],
   }
 );
