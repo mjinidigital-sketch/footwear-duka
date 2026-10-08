@@ -32,6 +32,7 @@ function SignupFormInner({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,7 +41,6 @@ function SignupFormInner({
     const password = formData.get("password") as string;
     const confirmPassword = formData.get("confirm-password") as string;
     const email = formData.get("email") as string;
-    const [error, setError] = useState<string | null>(null);
 
     // Client-side validation
     if (!email || !email.includes("@")) {
