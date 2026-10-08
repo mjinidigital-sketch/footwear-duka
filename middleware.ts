@@ -9,11 +9,7 @@ const isSignUpPage = createRouteMatcher(["/signup"]);
 const isProtectedRoute = createRouteMatcher(["/admin(.*)"]);
 
 export default convexAuthNextjsMiddleware(async (request, { convexAuth }) => {
-    if (!isProtectedRoute(request) && !isSignInPage(request) && !isSignUpPage(request)) {
-        return await convexAuth.nextjsServerSideClient(request, convexAuth);
-    }
-
-    const isAuthenticated = await convexAuth.isAuthenticated(request, convexAuth);
+    const isAuthenticated = await convexAuth.isAuthenticated();
 
     if (isProtectedRoute(request) && !isAuthenticated) {
         return nextjsMiddlewareRedirect(request, "/login");
@@ -22,8 +18,6 @@ export default convexAuthNextjsMiddleware(async (request, { convexAuth }) => {
     if ((isSignInPage(request) || isSignUpPage(request)) && isAuthenticated) {
         return nextjsMiddlewareRedirect(request, "/");
     }
-
-    return await convexAuth.nextjsServerSideClient(request, convexAuth);
 });
 
 export const config = {
