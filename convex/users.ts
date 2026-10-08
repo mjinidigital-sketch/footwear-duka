@@ -247,3 +247,37 @@ export const createUser = mutation({
         });
     },
 });
+
+// Clear all auth data (for migration purposes) — no auth required
+export const clearAuthData = mutation({
+    args: {},
+    handler: async (ctx) => {
+        // Delete all auth-related documents
+        const authAccounts = await ctx.db.query("authAccounts").collect();
+        for (const account of authAccounts) {
+            await ctx.db.delete(account._id);
+        }
+
+        const authSessions = await ctx.db.query("authSessions").collect();
+        for (const session of authSessions) {
+            await ctx.db.delete(session._id);
+        }
+
+        const authRefreshTokens = await ctx.db.query("authRefreshTokens").collect();
+        for (const token of authRefreshTokens) {
+            await ctx.db.delete(token._id);
+        }
+
+        const authRateLimits = await ctx.db.query("authRateLimits").collect();
+        for (const limit of authRateLimits) {
+            await ctx.db.delete(limit._id);
+        }
+
+        return {
+            authAccountsDeleted: authAccounts.length,
+            authSessionsDeleted: authSessions.length,
+            authRefreshTokensDeleted: authRefreshTokens.length,
+            authRateLimitsDeleted: authRateLimits.length,
+        };
+    },
+});
