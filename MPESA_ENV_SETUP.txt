@@ -1,0 +1,57 @@
+# MPESA Environment Variables Setup
+
+Add the following environment variables to your project's environment configuration (Convex dashboard for backend, .env.local for frontend):
+
+## Backend (Convex Dashboard)
+
+Set these in your Convex project's environment variables:
+
+- MPESA_CONSUMER_KEY: Your Safaricom Consumer Key
+- MPESA_CONSUMER_SECRET: Your Safaricom Consumer Secret
+- MPESA_BUSINESS_SHORTCODE: Your Business Short Code (default: 174379 for sandbox)
+- MPESA_PASSKEY: Your MPESA Pass Key
+- MPESA_CALLBACK_URL: Your deployed site URL + /mpesa/callback
+- MPESA_ENVIRONMENT: "sandbox" or "production"
+
+## Frontend (.env.local)
+
+Add these to your .env.local file:
+
+NEXT_PUBLIC_MPESA_CONSUMER_KEY=your_consumer_key_here
+NEXT_PUBLIC_MPESA_CONSUMER_SECRET=your_consumer_secret_here
+NEXT_PUBLIC_MPESA_BUSINESS_SHORTCODE=174379
+NEXT_PUBLIC_MPESA_PASSKEY=your_passkey_here
+NEXT_PUBLIC_MPESA_CALLBACK_URL=https://your-site.com/mpesa/callback
+NEXT_PUBLIC_MPESA_ENVIRONMENT=sandbox
+
+## Getting MPESA Credentials
+
+1. Go to https://developer.safaricom.co.ke/
+2. Create an account or log in
+3. Create a new app
+4. Copy the Consumer Key and Consumer Secret
+5. For sandbox testing, use:
+   - Business Short Code: 174379
+   - Pass Key: bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
+
+## Callback URL
+
+For local development, you'll need a tunnel service like ngrok or localtunnel:
+- Install: npm install -g localtunnel
+- Run: lt --port 3000
+- Use the provided URL as your callback URL
+
+For production, use your actual deployed domain.
+
+## Testing
+
+In sandbox mode, you can test with:
+- Phone: 2547... (any valid format)
+- Amount: Any amount (no real money deducted)
+
+## Important Security Notes
+
+- NEVER commit these credentials to version control
+- Rotate your credentials regularly
+- Use different credentials for sandbox and production
+- Never use production credentials in development
