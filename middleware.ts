@@ -9,8 +9,21 @@ const isSignUpPage = createRouteMatcher(["/signup"]);
 const isProtectedRoute = createRouteMatcher(["/admin(.*)"]);
 
 export default convexAuthNextjsMiddleware(async (request, { convexAuth }) => {
-    // Temporarily disabled middleware for testing
-    return;
+    if (!isProtectedRoute(request) && !isSignInPage(request) && !isSignUpPage(request)) {
+        return await convexAuth.nextjsServerSideClient(request, convexAuth);
+    }
+
+    const isAuthenticated = await convexAuth.isAuthenticated(request, convexAuth);
+
+    if (isProtectedRoute(request) && !isAuthenticated) {
+        return nextjsMiddlewareRedirect(request, "/login");
+    }
+
+    if ((isSignInPage(request) || isSignUpPage(request)) && isAuthenticated) {
+        return nextjsMiddlewareRedirect(request, "/");
+    }
+
+    return await convexAuth.nextjsServerSideClient(request, convexAuth);
 });
 
 export const config = {

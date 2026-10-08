@@ -186,11 +186,13 @@ function SignupFormInner({
           </form>
 
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+              <div className="text-center">
+                <div className="text-6xl mb-4">👟</div>
+                <p className="text-2xl font-bold">Footwear Duka</p>
+                <p className="text-muted-foreground">Your favorite footwear destination</p>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
