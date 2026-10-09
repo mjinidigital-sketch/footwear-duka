@@ -278,7 +278,7 @@ export default function Navbar1({ className }: Navbar1Props) {
             MAIN NAVIGATION HEADER
         ========================================================= */}
         <div className="border-b border-border/70 bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 shadow-xs">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
 
             {/* LOGO */}
             <Link
@@ -455,17 +455,6 @@ export default function Navbar1({ className }: Navbar1Props) {
                 Women
               </Link>
 
-              {/* SALE / OFFERS */}
-              <Link
-                href="/shop"
-                className="px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 text-red-600 dark:text-red-400 font-semibold hover:bg-red-500/10"
-              >
-                <Percent className="w-3.5 h-3.5" />
-                <span>Deals</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white dark:bg-red-500 dark:text-black px-1.5 py-0.5 rounded-full">
-                  Sale
-                </span>
-              </Link>
             </nav>
 
             {/* RIGHT UTILITIES (Search, Wishlist, Account, Cart) */}
@@ -496,15 +485,6 @@ export default function Navbar1({ className }: Navbar1Props) {
                 <Search className="w-5 h-5" />
               </button>
 
-              {/* Track Orders / Wishlist Link */}
-              <Link
-                href="/orders"
-                className="hidden sm:flex p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-                title="View your orders"
-                aria-label="Orders"
-              >
-                <PackageCheck className="w-5 h-5" />
-              </Link>
 
               {/* CART BUTTON */}
               <button

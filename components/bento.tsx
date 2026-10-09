@@ -59,7 +59,7 @@ export default function EcommerceBentoHero() {
             </Badge>
             <CardTitle className="text-sm md:text-lg font-black text-white mb-1">Air Max Pulse</CardTitle>
             <div className="flex items-center justify-between">
-              <span className="text-base md:text-xl font-black text-white">$149</span>
+              <span className="text-base md:text-xl font-black text-white">Ksh 4500</span>
               <div className="flex items-center gap-1 text-amber-400">
                 <Star className="w-2.5 h-2.5 md:w-3 md:h-3 fill-amber-400" />
                 <span className="text-[10px] md:text-xs font-bold text-white">4.8</span>
@@ -116,7 +116,7 @@ export default function EcommerceBentoHero() {
             </Badge>
             <CardTitle className="text-sm md:text-lg font-black text-white mb-1">Jordan Retro 1</CardTitle>
             <div className="flex items-center justify-between">
-              <span className="text-base md:text-xl font-black text-white">$189</span>
+              <span className="text-base md:text-xl font-black text-white">Ksh 3500</span>
               <div className="flex items-center gap-1 text-amber-400">
                 <Star className="w-2.5 h-2.5 md:w-3 md:h-3 fill-amber-400" />
                 <span className="text-[10px] md:text-xs font-bold text-white">4.9</span>
